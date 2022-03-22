@@ -3,7 +3,7 @@
 // Create our initial map object and Set the longitude, latitude, and the starting zoom level
 var myMap = L.map("map", {
     center: [33.5969, -117.6582],
-    zoom: 13
+    zoom: 14
   });
   
   // Add a tile layer (the background map image) to our map
@@ -17,6 +17,9 @@ var myMap = L.map("map", {
     accessToken: API_KEY
   }).addTo(myMap);
   
-  L.marker([33.5969, -117.6582], {
-    draggable: true
+  L.circleMarker([33.5969, -117.6582], {
+    color: 'red',
+    fillColor: 'blue',
+    fillOpacity: 0.2,
+    radius: 300
   }).addTo(myMap);
