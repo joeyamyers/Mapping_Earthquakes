@@ -41,17 +41,18 @@ L.control.layers(baseMaps).addTo(myMap);
 
 
 // Accessing the airport GeoJSON URL - must be after the tileLayer() method to ensure the map gets loaded before the data
-// let torontoData = "https://raw.githubusercontent.com/joeyamyers/Mapping_Earthquakes/main/Mapping_GeoJSON_Linestrings/static/js/torontoRoutes.json";
-
+let torontoData = "https://raw.githubusercontent.com/joeyamyers/Mapping_Earthquakes/main/Mapping_GeoJSON_Linestrings/static/js/torontoRoutes.json";
 
 
 // Grabbing our GeoJSON data.
 d3.json(torontoData).then(function(data) {
   console.log(data);
+// Creating a GeoJSON layer with the retrieved data.
 L.geoJSON(data, {
-      onEachFeature: function(feature, layer) {
-        console.log(layer);
-        layer.bindPopup();
-      }
+  color: "yellow",
+  weight: 2,
+  onEachFeature: function(feature, layer) {
+    layer.bindPopup("<h3> Airline: " + feature.properties.airline + "</h3> <hr><h3> Destination: " + feature.properties.dst + "</h3>");
+  }
 }).addTo(myMap);
 });
